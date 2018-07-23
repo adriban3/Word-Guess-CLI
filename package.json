@@ -1,0 +1,25 @@
+{
+  "name": "Word-Guess-CLI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^6.0.0",
+    "prompt": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriban3/Word-Guess-CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriban3/Word-Guess-CLI/issues"
+  },
+  "homepage": "https://github.com/adriban3/Word-Guess-CLI#readme"
+}
