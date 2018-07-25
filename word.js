@@ -2,14 +2,14 @@ var Letter = require("./letter.js");
 
 var Word = function(valArr) {
     this.valArr = valArr
-    this.dispArr = [];
 }
 
 Word.prototype.dispW = function(userGuess) {
+    var dispArr = "";
     this.valArr.forEach(function(item) {
-        this.dispArr.push(item.dispL(userGuess));
+        dispArr += item.dispL(userGuess) + " ";
     })
-    console.log(this.dispArr);
+    console.log(dispArr);
 }
 
 module.exports = Word;
