@@ -73,7 +73,12 @@ function guesser() {
         {
             type: "input",
             message: "Guess a letter!",
-            name: "letter"
+            name: "letter",
+            validate: function validateLetter(guessedLetter) {
+                //figure out simple way to check if input is a letter
+                //Useful link:
+                //https://github.com/sameeri/Code-Inquirer/wiki/Asking-questions-away-with-Inquirer!
+            }
         }
     ]).then(answers => {
         var guessLetter = answers.letter.toLowerCase();
