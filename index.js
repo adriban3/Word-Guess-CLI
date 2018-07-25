@@ -76,9 +76,10 @@ function guesser() {
             name: "letter"
         }
     ]).then(answers => {
-        var verify = gameWord.dispW(answers.letter);
+        var guessLetter = answers.letter.toLowerCase();
+        var verify = gameWord.dispW(guessLetter);
 
-        if (verify.trim() === randWord) {
+        if (verify.trim() === randWord.split("").join(" ")) {
             inquirer.prompt([
                 {
                     type: "confirm",
@@ -110,3 +111,5 @@ chooseWord();
 //end game if word is guessed x
 //count guesses, and end game accordingly
 //prompt for new game x
+//validate that user input is actually a letter
+//make lower case or uppercase letters work x
