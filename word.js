@@ -5,11 +5,12 @@ var Word = function(valArr) {
 }
 
 Word.prototype.dispW = function(userGuess) {
-    var dispArr = "";
+    var dispStr = "";
     this.valArr.forEach(function(item) {
-        dispArr += item.dispL(userGuess) + " ";
+        dispStr += item.dispL(userGuess) + " ";
     })
-    console.log(dispArr);
+    console.log(dispStr);
+    return dispStr;
 }
 
 module.exports = Word;

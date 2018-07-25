@@ -55,11 +55,13 @@ var wordArr = [
 ]
 
 var gameWord = [];
+var randWord = "";
 
 function chooseWord() {
     var gameArr = [];
-    var randWord = wordArr[Math.floor(Math.random() * wordArr.length)].split("");
-    randWord.forEach(function(item) {
+    randWord = wordArr[Math.floor(Math.random() * wordArr.length)];
+    randWordArr = randWord.split("");
+    randWordArr.forEach(function(item) {
         gameArr.push(new Letter(item));
     });
     gameWord = new Word(gameArr);
@@ -74,9 +76,37 @@ function guesser() {
             name: "letter"
         }
     ]).then(answers => {
-        gameWord.dispW(answers.letter);
-        guesser();
+        var verify = gameWord.dispW(answers.letter);
+
+        if (verify.trim() === randWord) {
+            inquirer.prompt([
+                {
+                    type: "confirm",
+                    message: "You won!  Would you like to play again?",
+                    name: "playAgain"
+                }
+            ]).then(answers => {
+
+                if (answers.playAgain) {
+                    randWord = "";
+                    chooseWord();
+                }
+
+                else {
+                    return;
+                }
+            })
+        }
+
+        else {
+
+            guesser();
+
+        }
     });
 }
 
 chooseWord();
+//end game if word is guessed x
+//count guesses, and end game accordingly
+//prompt for new game x
