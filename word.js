@@ -1,8 +1,15 @@
-var letter = require("./letter");
+var Letter = require("./letter.js");
 
-function Word(value) {
-    this.value = value;
-    this.guessed = false;
-    this.showString = function() {}; //should show string representing word/phrase with letters guessed appearing and underscores otherwise
-    this.onEachGuess = function() {}; //calls functtion of same name from letter.js file to see if letters are guessed on each user turn
+var Word = function(valArr) {
+    this.valArr = valArr
+    this.dispArr = [];
 }
+
+Word.prototype.dispW = function(userGuess) {
+    this.valArr.forEach(function(item) {
+        this.dispArr.push(item.dispL(userGuess));
+    })
+    console.log(this.dispArr);
+}
+
+module.exports = Word;

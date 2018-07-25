@@ -1,9 +1,19 @@
-function Letter(char, numberUsed, index) {
-    this.char = char;
-    this.numberused = numberUsed;
-    this.index = index;
-    this.value = "_";
-    this.guessed = false;
-    this.onEachGuess = function() {}; //should reset letter from underscore to letter when guessed, updates on each user guess
-    this.whenGuessed = function() {}; //should change this.guessed to true when this letter is guessed
+var Letter = function(value) {
+    this.value = value,
+    this.guessed = false
 }
+
+Letter.prototype.dispL = function(userGuess) {
+    if (userGuess === this.value || this.guessed) {
+        //display letter value
+        this.guessed = true;
+        return this.value;
+    }
+
+    else if (userGuess !== this.value && !this.guessed) {
+        //display "_"
+        return "_";
+    }
+}
+
+module.exports = Letter;

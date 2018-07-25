@@ -1,6 +1,6 @@
 var inquirer = require("inquirer");
-var word = require("./word");
-var letter = require("./letter");
+var Word = require("./word.js");
+var Letter = require("./letter.js");
 
 var wordArr = [
     "awkward",
@@ -8,7 +8,7 @@ var wordArr = [
     "banjo",
     "bungler",
     "croquet",
-    "crypt",
+    "cryptic",
     "dwarves",
     "fervid",
     "fishhook",
@@ -54,22 +54,29 @@ var wordArr = [
     "zombie"
 ]
 
-var gameWord = "";
+var gameWord = [];
 
 function chooseWord() {
-    gameWord = wordArr[Math.floor(Math.random() * wordArr.length)];
-    //store gameWord with word.js constructor
-    //then call next function
+    var gameArr = [];
+    var randWord = wordArr[Math.floor(Math.random() * wordArr.length)].split("");
+    randWord.forEach(function(item) {
+        gameArr.push(new Letter(item));
+    });
+    gameWord = new Word(gameArr);
+    guesser();
 }
 
-inquirer.prompt([
-    {
-        type: "input",
-        message: "Guess a letter!",
-        name: "letter"
-    }
-]).then(answers => {
-    console.log(answers);
-});
+function guesser() {
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Guess a letter!",
+            name: "letter"
+        }
+    ]).then(answers => {
+        gameWord.dispW(answers.letter);
+        guesser();
+    });
+}
 
 chooseWord();
