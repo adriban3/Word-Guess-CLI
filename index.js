@@ -71,13 +71,18 @@ function chooseWord() {
 function guesser() {
     inquirer.prompt([
         {
-            type: "input",
+            type: "input-validated",
             message: "Guess a letter!",
             name: "letter",
-            validate: function validateLetter(guessedLetter) {
-                //figure out simple way to check if input is a letter
-                //Useful link:
-                //https://github.com/sameeri/Code-Inquirer/wiki/Asking-questions-away-with-Inquirer!
+            validate(guessedLetter) {
+
+                if (guessedLetter < "A" || guessedLetter > "z") {
+                    return console.log("Please choose a single letter.");
+                }
+
+                else {
+                    return true;
+                }
             }
         }
     ]).then(answers => {
@@ -116,5 +121,5 @@ chooseWord();
 //end game if word is guessed x
 //count guesses, and end game accordingly
 //prompt for new game x
-//validate that user input is actually a letter
+//validate that user input is actually a letter x
 //make lower case or uppercase letters work x
