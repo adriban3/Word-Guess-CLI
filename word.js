@@ -6,11 +6,16 @@ var Word = function(valArr) {
 
 Word.prototype.dispW = function(userGuess) {
     var dispStr = "";
+    var intermediate = "";
+    var count = 0;
     this.valArr.forEach(function(item) {
-        dispStr += item.dispL(userGuess) + " ";
+        intermediate = item.dispL(userGuess)
+        count += intermediate[1];
+        dispStr += intermediate[0] + " ";
+        // dispStr += item.dispL(userGuess) + " ";
     })
     console.log(dispStr);
-    return dispStr;
+    return [dispStr, count];
 }
 
 module.exports = Word;
