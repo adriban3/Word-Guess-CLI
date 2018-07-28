@@ -1,6 +1,7 @@
 var inquirer = require("inquirer");
 var Word = require("./word.js");
 var Letter = require("./letter.js");
+var colors = require("colors");
 
 var wordArr = [
     "awkward",
@@ -79,11 +80,11 @@ function guesser() {
             validate(guessedLetter) {
 
                 if (guessedLetter < "A" || guessedLetter > "z") {
-                    console.log("\n\nPlease choose a letter.\n");
+                    console.log("\n\nPlease choose a letter.\n".yellow);
                 }
 
                 else if (guessedLetter.length > 1) {
-                    console.log("\n\nJust one letter please.\n");
+                    console.log("\n\nJust one letter please.\n".yellow);
                 }
 
                 else {
@@ -95,7 +96,7 @@ function guesser() {
         var guessLetter = answers.letter.toLowerCase();
 
         if (previous.includes(guessLetter)) {
-            console.log(`\nYou've already guessed ${guessLetter}, try again\n`);
+            console.log(`\nYou've already guessed ${guessLetter}, try again\n`.yellow);
             guesser();
         }
 
@@ -109,18 +110,18 @@ function guesser() {
     
             if (verify.trim().length === (parseInt(guessUpdate)*2)-1) {
                 guessNum -= 1;
-                console.log(`Wrong!!!  You have ${guessNum} guesses remaining.\n`);
+                console.log(`Wrong!!!  You have ${guessNum} guesses remaining.\n`.red);
             }
     
             else {
-                console.log(`Correct!!! You have ${guessNum} guesses remaining.\n`);
+                console.log(`Correct!!! You have ${guessNum} guesses remaining.\n`.green);
             }
     
             if (verify.trim() === randWord.split("").join(" ")) {
                 inquirer.prompt([
                     {
                         type: "confirm",
-                        message: "You won!  Would you like to play again?\n",
+                        message: "You won!  Would you like to play again?\n".green,
                         name: "playAgain"
                     }
                 ]).then(answers => {
@@ -142,7 +143,7 @@ function guesser() {
                 inquirer.prompt([
                     {
                         type: "confirm",
-                        message: `You're out of guesses!  You lose.  The word was ${randWord} Would you like to play again?\n`,
+                        message: `You're out of guesses!  You lose.  The word was ${randWord} Would you like to play again?\n`.red,
                         name: "playAgain"
                     }
                 ]).then(answers => {
