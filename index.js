@@ -241,6 +241,6 @@ chooseWord();
 //output correct answer if user loses x
 //end game if number of guesses = 0 x
 //make sure only one letter can be input, currently whole string works x
-//when invalid input is used it is shown, remove this
+//when invalid input is used it is shown, remove this x
 //see if letter has already been guessed and display warning message x
 //log guessed letters x
