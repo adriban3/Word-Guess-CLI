@@ -14,7 +14,7 @@ Word.prototype.dispW = function(userGuess) {
         dispStr += intermediate[0] + " ";
         // dispStr += item.dispL(userGuess) + " ";
     })
-    console.log(dispStr);
+    console.log("\n" + dispStr + "\n");
     return [dispStr, count];
 }
 
